@@ -1,41 +1,12 @@
 extends layout
 
 block content
-  -
-   let results =[
-      {
-        "Fish_Name": "Cat fish",
-        "country": "japan",
-        "price": 33
-      },
-      {
-        "Fish_Name": "star Fish",
-        "country": "india",
-        "price": 45
-      },
-      {
-        "Fish_Name": "Shark",
-        "country": "India",
-        "price": 230
-      },
-      {
-        "Fish_Name": "Dolfin",
-        "country": "South Africa",
-        "price": 333
-      },
-      {
-        "Fish_Name": "Whale",
-        "country": "Russia",
-        "price": 323
-      }
-    ]
+  - let fishes = results
   h1= title
-  .container-fluid 
-    .row 
-      each fishes in results
-        div(class="col-sm-2" onclick=`buy(${results.indexOf(fishes)})`) 
-          each value,key in fishes  
-            = " " +value
+  div(class="container-fluid")
+  div(class="row")
+    each fish,index in fishes
+      div(class="col-sm-2" onclick=`buy(${index})`) #{fish.Fish_Name} - #{fish.country} - #{fish.price}
   script.
     function buy(index){
       alert("You purchased item "+index)
