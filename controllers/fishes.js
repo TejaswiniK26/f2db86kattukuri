@@ -16,7 +16,7 @@ exports.fishes_list = async function(req, res) {
 exports.fishes_detail = async function(req, res) { 
     console.log("detail"  + req.params.id) 
     try { 
-        result = await fishes.findById( req.params.id) 
+        result = await Fishes.findById( req.params.id) 
         res.send(result) 
     } catch (error) { 
         res.status(500) 
@@ -51,9 +51,25 @@ exports.fishes_delete = function(req, res) {
 }; 
  
 // Handle fishes update form on PUT. 
-exports.fishes_update_put = function(req, res) { 
-    res.send('NOT IMPLEMENTED: fishes update PUT' + req.params.id); 
-};
+exports.fishes_update_put = async function(req, res) { 
+    console.log(`update on id ${req.params.id} with body 
+${JSON.stringify(req.body)}`) 
+    try { 
+        let toUpdate = await Fishes.findById( req.params.id) 
+        // Do updates of properties 
+        if(req.body.Fish_Name)  
+               toUpdate.Fish_Name = req.body.Fish_Name; 
+        if(req.body.country) toUpdate.country = req.body.country; 
+        if(req.body.price) toUpdate.price = req.body.price; 
+        let result = await toUpdate.save(); 
+        console.log("Sucess " + result) 
+        res.send(result) 
+    } catch (err) { 
+        res.status(500) 
+        res.send(`{"error": ${err}: Update for id ${req.params.id} 
+failed`); 
+    } 
+}; 
 
 // VIEWS 
 // Handle a show all view 
