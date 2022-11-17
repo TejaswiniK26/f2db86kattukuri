@@ -6,7 +6,7 @@ block content
   div(class="container-fluid")
   div(class="row")
     each fish,index in fishes
-      div(class="col-sm-2" onclick=`buy(${index})`) #{fish.Fish_Name} - #{fish.country} - #{fish.price}
+      div(class="fishesAttr col-sm-2" onclick=`buy(${index})`) #{fish.Fish_Name} - #{fish.country} - #{fish.price}
   script.
     function buy(index){
       alert("You purchased item "+index)

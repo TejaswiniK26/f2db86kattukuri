@@ -26,5 +26,17 @@ router.get('/fishes/:id', fishes_controller.fishes_detail);
  
 // GET request for list of all Fishes items. 
 router.get('/fishes', fishes_controller.fishes_list); 
- 
+
+/* GET detail fishes page */ 
+router.get('/detail', fishes_controller.fishes_view_one_Page); 
+
+/* GET create fishes page */ 
+router.get('/create', fishes_controller.fishes_create_Page); 
+
+/* GET create update page */ 
+router.get('/update', fishes_controller.fishes_update_Page); 
+
+/* GET delete fishes page */ 
+router.get('/delete', fishes_controller.fishes_delete_Page); 
+
 module.exports = router; 

@@ -1,0 +1,25 @@
+extends layout 
+ 
+block content 
+  h1= title 
+ 
+ if (toShow == null) 
+    h2 No instance to detail 
+  else
+  - let fishesid = toShow._id 
+  - let Fish_Name = toShow.Fish_Name 
+  - let country = toShow.country 
+  - let price = toShow.price 
+  div 
+    div.row 
+      div(class='fishesAttr mr-3') fishes ID is: 
+      div #{fishesid} 
+    div.row 
+      div(class='fishesAttr mr-3') fishes Name is: 
+      div #{Fish_Name} 
+    div.row 
+      div(class='fishesAttr mr-3') fishes country is: 
+      div #{country} 
+    div.row 
+      div(class='fishesAttr mr-3') fishes price is: 
+      div #{price} 
