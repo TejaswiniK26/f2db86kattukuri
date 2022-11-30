@@ -2,15 +2,16 @@ extends layout
  
 block content 
   h1= title 
- 
- if (toShow == null) 
-    h2 No instance to update 
+  
+  if (toShow == null) 
+    h2 No instance to delete 
   else
   - let fishesid = toShow._id 
   - let Fish_Name = toShow.Fish_Name 
   - let country  = toShow.country 
   - let price = toShow.price 
-   
+  - let items = results; 
+  
   div.row(class='mb-2') 
     div.mr-1 ID is 
     div #{fishesid} 
@@ -26,6 +27,7 @@ block content
         label.fishesAttr(for='price') fishes  price 
         input#price(type='number', name='price', value= price ) 
     input(type="submit") 
+    
  
   script. 
     document.forms['fishesForm'].addEventListener('submit', (event) => { 

@@ -6,7 +6,9 @@ block content
   div(class="container-fluid")
   div(class="row")
     each fish,index in fishes
+     - let destination = `dispatch(\"/resource/update?id=${fish._id}\")`
       div(class="fishesAttr col-sm-2" onclick=`buy(${index})`) #{fish.Fish_Name} - #{fish.country} - #{fish.price}
+      button.btn( class="btn-primary ml-1", onclick= destination) Update 
   script.
     function buy(index){
       alert("You purchased item "+index)
