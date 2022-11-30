@@ -20,12 +20,12 @@ router.get('/', fishes_controller.fishes_view_all_Page);
 router.get('/detail', fishes_controller.fishes_view_one_Page);
 
 /* GET create fishes page */
-router.get('/create', fishes_controller.fishes_create_Page);
+router.get('/create', secured, fishes_controller.fishes_create_Page);
 
 /* GET create update page */
 router.get('/update', secured, fishes_controller.fishes_update_Page);
 
 /* GET delete fishes page */
-router.get('/delete', fishes_controller.fishes_delete_Page);
+router.get('/delete', secured, fishes_controller.fishes_delete_Page);
 
 module.exports = router;

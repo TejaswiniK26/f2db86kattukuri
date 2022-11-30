@@ -6,10 +6,15 @@ block content
   div(class="container-fluid")
   div(class="row")
     each fish,index in fishes
-     - let destination = `dispatch(\"/resource/update?id=${fish._id}\")`
-      div(class="fishesAttr col-sm-2" onclick=`buy(${index})`) #{fish.Fish_Name} - #{fish.country} - #{fish.price}
-      button.btn( class="btn-primary ml-1", onclick= destination) Update 
+      - let destination = `dispatch(\"/fishes/update?id=${fish._id}\")`
+      - let detail = `dispatch(\"/fishes/detail/?id=${fish._id}")`
+      - let deleteFish = `dispatch(\"/fishes/delete/?id=${fish._id}")`
+      div(class="fishesAttr col-sm-2 m-1") #{fish.Fish_Name} - #{fish.country} - #{fish.price}
+        button.btn( class="btn-primary", onclick= destination) Update
+        button.btn( class="btn-success", onclick= detail) Details
+        button.btn( class="btn-danger", onclick= deleteFish) Delete
+
   script.
-    function buy(index){
-      alert("You purchased item "+index)
+    function dispatch(path){
+      window.location.href=path
     }
